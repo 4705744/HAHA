@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>神庙疾行</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-label="神庙疾行游戏">
+      <section id="home" class="screen home-screen active">
+        <div class="temple-mark">✦</div>
+        <p class="eyebrow">TEMPLE RUNNER</p>
+        <h1>神庙<span>疾行</span></h1>
+        <p class="tagline">穿越遗迹，逃离黑暗。</p>
+        <div class="hero-stats"><span>🏆 <b id="best-score">0</b> 最佳分数</span><span>🪙 <b id="coin-count">120</b></span></div>
+        <button class="primary-button play-button" data-action="start">开始冒险 <i>→</i></button>
+        <nav class="home-nav" aria-label="主菜单">
+          <button data-action="shop"><span>◈</span>商店</button>
+          <button data-action="settings"><span>⚙</span>设置</button>
+        </nav>
+        <p class="tip">滑动 / 方向键控制 · 收集金币与道具</p>
+      </section>
+
+      <section id="shop" class="screen panel-screen">
+        <header class="panel-header"><button class="back" data-action="home">‹</button><h2>遗迹补给站</h2><span>🪙 <b id="shop-coins">120</b></span></header>
+        <p class="panel-subtitle">带上装备，让这次逃亡走得更远。</p>
+        <div class="shop-grid" id="shop-grid"></div>
+        <button class="text-button" data-action="home">返回主界面</button>
+      </section>
+
+      <section id="settings" class="screen panel-screen">
+        <header class="panel-header"><button class="back" data-action="home">‹</button><h2>设置</h2><span></span></header>
+        <div class="settings-card">
+          <div class="setting-row"><div><b>音效</b><small>碰撞、金币与道具提示音</small></div><button class="switch on" data-setting="sound" aria-label="切换音效"><i></i></button></div>
+          <div class="setting-row"><div><b>背景音乐</b><small>探索遗迹时播放音乐</small></div><button class="switch on" data-setting="music" aria-label="切换背景音乐"><i></i></button></div>
+          <div class="setting-row"><div><b>震动反馈</b><small>移动端障碍碰撞提示</small></div><button class="switch on" data-setting="vibration" aria-label="切换震动反馈"><i></i></button></div>
+        </div>
+        <div class="settings-card muted-card"><b>游戏说明</b><p>左右移动躲避障碍；护盾可抵挡一次撞击，磁铁会自动吸附金币。</p></div>
+        <button class="text-button" data-action="reset">重置游戏数据</button>
+      </section>
+
+      <section id="game" class="screen game-screen">
+        <canvas id="game-canvas" width="480" height="800" aria-label="神庙逃亡游戏画面"></canvas>
+        <div class="game-hud"><span>🪙 <b id="run-coins">0</b></span><div><small>距离</small><b id="distance">0</b> m</div><button class="pause-button" data-action="pause">Ⅱ</button></div>
+        <div id="item-bar" class="item-bar"></div>
+        <div id="pause-overlay" class="game-overlay hidden"><p>已暂停</p><button class="primary-button" data-action="resume">继续逃亡</button><button class="ghost-button" data-action="home">放弃本局</button></div>
+        <div id="result-overlay" class="game-overlay hidden"><p class="eyebrow">本次逃亡结束</p><h2>跑出了 <b id="final-distance">0</b> 米</h2><div class="result-coins">🪙 +<b id="final-coins">0</b></div><button class="primary-button" data-action="start">再来一次 <i>→</i></button><button class="ghost-button" data-action="home">返回主界面</button></div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
